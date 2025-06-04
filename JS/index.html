@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="main">
+    <div class="controls">
+      <button id="minusBtn">–</button>
+      <input type="text" id="quantityInput" value="1" readonly>
+      <button id="plusBtn">+</button>
+    </div>
+
+    <button id="calcBtn">Calculate Total</button>
+    <div class="total">Total = ₹0</div>
+  </div>
+
+  <script>
+    const pricePerItem = 299;
+    let quantity = 1;
+
+    const minusBtn = document.getElementById('minusBtn');
+    const plusBtn = document.getElementById('plusBtn');
+    const quantityInput = document.getElementById('quantityInput');
+    const calcBtn = document.getElementById('calcBtn');
+    const totalDiv = document.getElementsByClassName('total')[0];
+
+
+    plusBtn.addEventListener('click', () => {
+      if (quantity < 5) {
+        quantity++;
+        quantityInput.value = quantity;
+      }
+    });
+
+
+    minusBtn.addEventListener('click', () => {
+      if (quantity > 1) {
+        quantity--;
+        quantityInput.value = quantity;
+      }
+    });
+
+    calcBtn.addEventListener('click', () => {
+      const total = quantity * pricePerItem;
+      totalDiv.textContent = `Total = ₹${total}`;
+    });
+  </script>
+</body>
+</html>
